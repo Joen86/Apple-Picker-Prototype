@@ -11,22 +11,22 @@ public class ApplePicker : MonoBehaviour {
 	public List<GameObject> basketList;
 
 	void Start () {
-				basketList = new List<GameObject> ();
-				for (int i=0; i<numBaskets; i++) {
-						GameObject tBasketGO = Instantiate (basketPrefab) as GameObject;
-						Vector3 pos = Vector3.zero;
-						pos.y = basketBottomY + (basketSpacingY * i);
-						tBasketGO.transform.position = pos;
-						basketList.Add(tBasketGO);
-				}
+		basketList = new List<GameObject> ();
+		for (int i=0; i<numBaskets; i++) {
+			GameObject tBasketGO = Instantiate (basketPrefab) as GameObject;
+			Vector3 pos = Vector3.zero;
+			pos.y = basketBottomY + (basketSpacingY * i);
+			tBasketGO.transform.position = pos;
+			basketList.Add(tBasketGO);
 		}
+	}
 
 	public void AppleDestroyed() {
-				GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
-				foreach (GameObject tGO in tAppleArray) {
-						Destroy (tGO);
-				}
-		int basketIndex = basketList.Count - 1;
+		GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+		foreach (GameObject tGO in tAppleArray) {
+			Destroy (tGO);
+		}
+		int basketIndex = basketList.Count-1;
 		GameObject tBasketGO = basketList[basketIndex];
 		basketList.RemoveAt(basketIndex);
 		Destroy(tBasketGO);
